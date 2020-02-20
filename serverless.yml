@@ -23,6 +23,7 @@ service: slstest
 provider:
   name: aws
   runtime: python2.7
+  # profile: cheese
 
 # you can overwrite defaults here
 #  stage: dev
