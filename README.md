@@ -21,6 +21,10 @@ Serverless hello world
 
 `$ sls invoke local -f hello`
 
+# remove
+
+`$ sls remove`
+
 # aws
 
 ポリシー名：AWSCloudFormationDeployer
