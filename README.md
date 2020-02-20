@@ -15,6 +15,8 @@ Serverless hello world
 
 `$ sls deploy -v`
 
+`$ sls deploy --aws-profile hoge`
+
 # test
 
 `$ sls invoke -f hello`
