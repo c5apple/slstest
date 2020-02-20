@@ -49,17 +49,22 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  include:
-#    - include-me.py
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
+package:
+  individually: true
+  exclude:
+    - "**"
 
 functions:
-  hello:
+  hello1:
     handler: handler.hello
+    package:
+      include:
+        - handler.py
+  hello2:
+    handler: handler2.hello2
+    package:
+      include:
+        - handler2.py
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
