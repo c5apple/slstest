@@ -2,23 +2,17 @@ import json
 
 
 def hello2(event, context):
-    body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
-    }
+
+    row1='"aaaa","bbbb","cccc"'
+    row2='aaaa,bbbb,cccc'
+    csv=""
+    csv=csv+row1+str('\n')
+    csv=csv+row2+str('\n')
 
     response = {
         "statusCode": 200,
-        "body": json.dumps(body)
+        "body": csv,
+        "headers": {"content-type": "text/csv"}
     }
 
     return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
-    return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
-    }
-    """
