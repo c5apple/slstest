@@ -73,6 +73,18 @@ functions:
       - http:
           path: hello/hello2
           method: get
+  hello3:
+    handler: handler3.hello3
+    package:
+      include:
+        - handler3.py
+    events:
+      - http:
+          path: hello/hello3
+          method: post
+          request:
+            schema:
+              application/json: ${file(create_request.json)}
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
