@@ -1,9 +1,14 @@
 import json
-
+import urllib
 
 def hello3(event, context):
 
-    print(event["body"])
+    body = event["body"]
+    print(body)
+
+    body2 = urllib.parse.parse_qs(body)
+    print(body2)
+
     # print(context)
 
     response = {
