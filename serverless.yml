@@ -57,15 +57,15 @@ package:
 
 functions:
   hello1:
-    handler: handler.hello
+    handler: src/handler.hello
     package:
       include:
-        - handler.py
+        - src/handler.py
   hello2:
-    handler: handler2.hello2
+    handler: src/handler2.hello2
     package:
       include:
-        - handler2.py
+        - src/handler2.py
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -74,10 +74,10 @@ functions:
           path: hello/hello2
           method: get
   hello3:
-    handler: handler3.hello3
+    handler: src/handler3.hello3
     package:
       include:
-        - handler3.py
+        - src/handler3.py
     events:
       - http:
           path: hello/hello3
