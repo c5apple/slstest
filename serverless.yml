@@ -54,26 +54,23 @@ functions:
     package:
       include:
         - src/handler.py
-  hello2:
-    handler: src/handler2.hello2
+  apigateway_get:
+    handler: src/apigateway_get.hello2
     package:
       include:
-        - src/handler2.py
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
+        - src/apigateway_get.py
     events:
       - http:
-          path: hello/hello2
+          path: hello/get
           method: get
-  hello3:
-    handler: src/handler3.hello3
+  apigateway_post:
+    handler: src/apigateway_post.hello3
     package:
       include:
-        - src/handler3.py
+        - src/apigateway_post.py
     events:
       - http:
-          path: hello/hello3
+          path: hello/post
           method: post
           request:
             schema:
