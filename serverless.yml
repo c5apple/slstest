@@ -55,7 +55,8 @@ functions:
       include:
         - src/handler.py
   apigateway_get:
-    handler: src/apigateway_get.hello2
+    description: APIGateway GETサンプル
+    handler: src/apigateway_get.lambda_handler
     package:
       include:
         - src/apigateway_get.py
@@ -64,7 +65,8 @@ functions:
           path: hello/get
           method: get
   apigateway_post:
-    handler: src/apigateway_post.hello3
+    description: APIGateway POSTサンプル
+    handler: src/apigateway_post.lambda_handler
     package:
       include:
         - src/apigateway_post.py

@@ -1,7 +1,9 @@
 import json
 
-
-def hello2(event, context):
+#
+# API Gateway GETサンプル
+#
+def lambda_handler(event, context):
 
     row1='"aaaa","bbbb","cccc"'
     row2='aaaa,bbbb,cccc'

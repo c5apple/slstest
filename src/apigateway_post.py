@@ -1,7 +1,10 @@
 import json
 import urllib
 
-def hello3(event, context):
+#
+# API Gateway POSTサンプル
+#
+def lambda_handler(event, context):
 
     body = event["body"]
     print(body)
