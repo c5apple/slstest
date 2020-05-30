@@ -29,21 +29,14 @@ provider:
 # you can overwrite defaults here
 #  stage: dev
 
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:GetItem"
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+      Resource: "*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -85,6 +78,13 @@ functions:
           request:
             schema:
               application/json: ${file(create_request.json)}
+  dynamodb:
+    handler: src/dynamodb.lambda_handler
+    description: DynamoDBサンプル
+    package:
+      include:
+        - src/dynamodb.py
+
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
