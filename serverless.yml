@@ -37,6 +37,10 @@ provider:
         - "dynamodb:UpdateItem"
         - "dynamodb:DeleteItem"
       Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "rekognition:*"
+      Resource: "*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -83,6 +87,27 @@ functions:
     package:
       include:
         - src/dynamodb.py
+  rekognition_image_moderation:
+    handler: src/rekognition.image_moderation
+    description: Rekognitionサンプル(画像の節度)
+    package:
+      include:
+        - src/rekognition.py
+    events:
+      - s3:
+          bucket: c5apple-slstest
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: upload
+            - suffix: .jpg
+          existing: true
+      - s3:
+          bucket: c5apple-slstest
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: upload
+            - suffix: .png
+          existing: true
 
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
@@ -117,14 +142,9 @@ functions:
 #    environment:
 #      variable2: value2
 
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+resources:
+  Resources:
+    Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: c5apple-slstest
