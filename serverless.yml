@@ -108,6 +108,21 @@ functions:
             - prefix: upload
             - suffix: .png
           existing: true
+  rekognition_video_moderation:
+    handler: src/rekognition.video_moderation
+    description: Rekognitionサンプル(動画の節度)
+    timeout: 180 # とりあえず3分
+    package:
+      include:
+        - src/rekognition.py
+    events:
+      - s3:
+          bucket: c5apple-slstest
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: upload
+            - suffix: .mp4
+          existing: true
 
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
